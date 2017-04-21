@@ -14,12 +14,18 @@ from selenium import webdriver
 all_link=[]
 all_name=[]
 def fetch(page):
-    # PROXY = "61.168.162.32:80"#use proxy
+    # PROXY = "121.206.16.147:23650"#use proxy
+    options = webdriver.ChromeOptions()
     # chrome_options = webdriver.ChromeOptions()
-    # chrome_options.add_argument('--proxy-server={0}'.format(PROXY))
+    # options.add_argument('--proxy-server={0}'.format(PROXY))
 
-    url = 'http://gz.meituan.com/category/meishi/all/page{0}?mtt=1.index%2Fdefault%2Fpoi.0.0'.format(page)
-    driver = webdriver.Chrome()  # 用chrome浏览器打开
+    # 设置中文
+    options.add_argument('lang=zh_CN.UTF-8')
+    # 更换头部
+    options.add_argument(
+        'user-agent="Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/57.0.2987.133 Safari/537.36')
+    url = 'http://gz.meituan.com/category/qitameishi/all/page{0}?mtt=1.index%2Fdefault%2Fpoi.0.0.'.format(page)
+    driver = webdriver.Chrome(chrome_options=options)  # 用chrome浏览器打开
     driver.get(url)
     time.sleep(5)
     for i in range(2):
@@ -67,6 +73,6 @@ def write_file():
 
 
 if __name__=='__main__':
-    for url in range(1,7):
+    for url in range(1,8):
         fetch(url)
     write_file()

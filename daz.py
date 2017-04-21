@@ -7,7 +7,7 @@ all_link=[]
 all_addr=[]
 all_name=[]
 def scrap(page):
-    url='http://www.dianping.com/search/category/4/10/g113p{0}?aid=32501719%2C69310636%2C66250176%2C67087758%2C38080672%2C68919582%2C66710311%2C32526514%2C70733025%2C20246808%2C76837516&cpt=32501719%2C69310636%2C66250176%2C67087758%2C38080672%2C68919582%2C66710311%2C32526514%2C70733025%2C20246808%2C76837516&tc=1'.format(page)
+    url='http://www.dianping.com/search/category/4/10/g118p{0}?aid=57299756%2C18705098%2C22046368%2C8666938%2C32479496&cpt=57299756%2C18705098%2C22046368'.format(page)
     print (url)
     try:
         headers = {
@@ -39,5 +39,5 @@ def write_file():
 if __name__=='__main__':
     for i in range(1,51):
         scrap(i)
-        time.sleep(20)
+        time.sleep(2)
     write_file()
